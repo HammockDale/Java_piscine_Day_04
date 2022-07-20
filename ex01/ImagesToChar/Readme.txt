@@ -7,8 +7,10 @@ mkdir -p target
 # Set the destination directory for class files
 javac -d ./target src/java/edu/school21/printer/*/*.java
 
-# Specify where to find user class files
-java -cp target edu.school21.printer.app.Program . 0
+cp -R src/resources target/.
 
+jar cfm ./target/images-to-chars-printer.jar src/manifest.txt -C target .
 
-#jar cvf imageToChar.jar ./target
+chmod u+x target/images-to-chars-printer.jar
+
+java -jar target/images-to-chars-printer.jar . 0
